@@ -2,8 +2,6 @@
 #define MAX 9
 
 void show(int matriz[MAX][MAX]);
-//void search(int matriz);
-//void possibilities(int matriz);
 
 int main()
 {
@@ -76,10 +74,12 @@ int main()
                                         if(sudoku[line][column] != 0)
                                         vet[sudoku[line][column]]=0;
                                 }
+                                printf("Na posição [%d][%d] = ", i, j);
                                     for (int b = 1; b <= MAX; b++) {//printar as possibilidades(números 1's do vetor), ainda sem verificar a submatriz.
                                         if (vet[b] != 0)
-                                        printf("Na posição [%d][%d] = %d é uma possibilidade.\n", i, j, b);
+                                        printf("%d ", b);
                                     }//retornar o valor original para todas as posições do vetor.
+                                    printf("\n");
                                     vet[0]=1;   vet[1]=1;   vet[2]=1;
                                     vet[3]=1;   vet[4]=1;   vet[5]=1;
                                     vet[6]=1;   vet[7]=1;   vet[8]=1;
@@ -94,15 +94,16 @@ int main()
 }
 
 void show(int matriz[MAX][MAX]){
+    int row, spine;
     puts("O jogo atual é:");
     puts("┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐");
-        for (int row = 0; row < 9; row++) {
+        for (row = 0; row < 9; row++) {
             printf("│");
-            for (int spine = 0; spine < 9; spine++) {
+            for (spine = 0; spine < 9; spine++) {
                 printf("  %d  │", matriz[row][spine]);
             }
             if (row != 8) printf("\n├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤\n");
         }
             printf("\n└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘\n");
-        return 0;
+        return;
 }
